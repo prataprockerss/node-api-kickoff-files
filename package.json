@@ -1,15 +1,10 @@
-# Node API kickoff files
-
-## Problem
-1. As per my experince for mid level node developer it hard to write clean code. Best way to get all file setup is by using  [express genrator] (https://www.npmjs.com/package/express-generator) if you writing an API so you are never going to touch Views or public folder. 
-2. For API we rquired some addtinal node module which we to install manually 
-
-
-## Solution
-To overcome above problem I have created start up file which has all module which are required to write an api
-
-## Dependencies Included 
-```javascript
+{
+  "name": "express-kickoff-files",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
     "async": "^2.6.0",
     "await": "^0.2.6",
@@ -33,13 +28,9 @@ To overcome above problem I have created start up file which has all module whic
     "sendgrid": "^5.2.3",
     "serve-favicon": "~2.4.2"
   },
-```
-
-## Dev Dependencies included 
-```javascript
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "mocha": "^2.4.5"
   }
-```
+}
