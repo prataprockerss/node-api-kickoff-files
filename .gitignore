@@ -1,2 +1,7 @@
+config/constants.js
+node_modules/
+
+public/\.DS_Store
 
 \.DS_Store
+package-lock\.json
