@@ -1,15 +1,16 @@
 const
   express = require('express'),
   router = express.Router(),
-  C = require('../config/constants')
-/* GET home page. */
+  C = require('../config/constants'),
+  M = require('../models/index')
+
+
 router.get('/', function(req, res, next) {
-  let index_params = { 
-    title: 'Listing Page',
-    pageList: C.PAGE_LIST,
-    breadcrumbs: false
+  let response = { 
+    title: 'index Page',
   }
-  res.render('index', index_params);
+  res.status(200).send(response)
 });
+
 
 module.exports = router;

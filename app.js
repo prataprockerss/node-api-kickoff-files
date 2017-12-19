@@ -7,47 +7,25 @@ const
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
-  // handlebars
-  
-  expHbs = require('express-handlebars'),
-  helpers = require('handlebars-helpers')(),
   // routues
   index = require('./routes/index'),
   users = require('./routes/users'),
-  docs = require('./routes/docs')
   
-  app = express(),
-  hbsConfig = {
-    extname: 'hbs',
-    layoutsDir: path.join(__dirname, '/views/layouts/'),
-    defaultLayout: 'main',
-    partialsDir: {
-      dir: path.join(__dirname, '/views/partials/')
-    },
-    helpers: helpers
-  },
-  hbs = expHbs.create(hbsConfig)
-// view engine setup
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
+  app = express()
 
-
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// using route path
 app.use('/', index);
 app.use('/users', users);
-app.use('/docs', docs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error(C.ERROR_MSSAGES._404); //message is importing form Constants
+  var err = new Error(C.MESSAGES._404); //message is importing form Constants
   err.status = 404;
   next(err);
 });
@@ -59,10 +37,13 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500)
+    .send(
+      {
+        status: 0,
+        message: err.message   
+      }
+    )
 });
-
-
 
 module.exports = app;

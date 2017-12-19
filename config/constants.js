@@ -6,13 +6,14 @@ module.exports = {
   API_ENDPOINT : {
     login: API_SERVER_PATH+'login'
   },
-  ERROR_MSSAGES: {
-    _404 : 'Page not found'
+  MESSAGES: {
+    _404 : 'Page not found',
+    errormsg: 'Error Message'
   },
   DB_CONFIG: {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'sample'
   },
   PAGE_LIST: [

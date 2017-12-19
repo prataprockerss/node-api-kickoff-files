@@ -1,11 +1,7 @@
 const
   C = require('./constants'),
-  mysql =  require('mysql')
-  
-
-
-
-const connection = mysql.createConnection(C.DB_CONFIG)
+  mysql =  require('mysql'),
+  connection = mysql.createConnection(C.DB_CONFIG)
 
 connection.connect((connError)=>{
   if (connError) {

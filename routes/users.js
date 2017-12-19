@@ -1,20 +1,26 @@
 const
   express = require('express'),
-  router = express.Router()
+  router = express.Router(),
+  M = require('../models/users'),
+  C = require('../config/constants')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  let users_params = { title: 'Express' }
-  res.render('pages/users', users_params);
-});
-
-router.get('/login',(req,res) => {
-  let login_params = {
-    title: 'Login',
-    layout: false,
-    fontAwesome: true,
-  }
-  res.render('pages/login',login_params)
+router.get('/get', (req, res) =>{
+  M.get((error,results) => {
+    if(error) {
+      let response = {
+        status: 0,
+        message: C.MESSAGES.errormsg,
+        error: error
+      }
+      res.status(501).send(response)
+    } else{
+      let response = {
+        status: 1, 
+        data: results
+      }
+      res.status(200).send(response)
+    }
+  })
 })
 
 module.exports = router;
