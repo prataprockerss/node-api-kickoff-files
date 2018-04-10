@@ -3,7 +3,9 @@ const
   router = express.Router()
   homeController = require('../controller/index');
 
-router.get('/', homeController.home);
+router.route('/')
+  .get(homeController.getHome)
+  .post(homeController.postHome)
 
 
 module.exports = router;
