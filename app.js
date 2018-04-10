@@ -9,7 +9,6 @@ const
   bodyParser = require('body-parser'),
   // routues
   index = require('./routes/index'),
-  users = require('./routes/users'),
   
   app = express()
 
@@ -21,11 +20,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // using route path
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error(C.MESSAGES._404); //message is importing form Constants
+  var err = new Error(C.MESSAGES.ERROR._404); //message is importing form Constants
   err.status = 404;
   next(err);
 });
@@ -41,7 +39,8 @@ app.use(function(err, req, res, next) {
     .send(
       {
         status: 0,
-        message: err.message   
+        message: err.message,
+        stack: err.stack
       }
     )
 });

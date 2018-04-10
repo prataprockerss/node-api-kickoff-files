@@ -3,7 +3,5 @@ const
   field = form.field
 
 module.exports = {
-  login : () => {
-    // form validation paramters for login function
-  }
+  // validation function here
 }
